@@ -113,3 +113,28 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+* {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.breadcrumb {
+    background-color: initial;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #101010;
+}
+.border-radius-none {
+    border-radius: 0px !important;
+}
+.padding-bottom-15 {
+    padding-bottom: 15px;
+}
+h3 {
+    font-size: 24px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}

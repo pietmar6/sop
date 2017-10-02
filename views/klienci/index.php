@@ -2,38 +2,50 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\KlienciSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kliencis';
+$this->title = 'Klienci';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="klienci-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Klienci', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+<?php Pjax::begin(); ?>
+    <?=
+    GridView::widget([
+        'summary' => "Pokazano {begin} - {end} z {totalCount} klientów",
+        'layout' => "{summary}\n{items}\n<div class='text-center'>{pager}</div>",
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'ID_klienta',
-            'imie',
-            'nazwisko',
-            'dyskretny',
-            'oferta',
-            // 'pesel',
-            // 'dowod',
-            // 'data_urodzenia',
-            // 'plec',
-            // 'nr_tel1',
+            [
+                'attribute' => 'imie',
+                'label' => 'Imie i Nazwisko',
+                'value' => function($model) {
+                    return $model->imie . ' ' . $model->nazwisko;
+                },
+            ],
+            [
+                'attribute' => 'ulica',
+                'label' => 'Adres',
+                'value' => function($model) {
+                    return $model->ulica . ' ' . $model->nr_domu . ' ' . $model->nr_mieszkania . ' ' . $model->kod_pocztowy . ' ' . $model->miasto;
+                },
+            ],
+            'pesel',
+            'data_urodzenia',
+            [
+                'attribute' => 'nr_tel1',
+                'label' => 'Telefon',
+                'value' => function($model) {
+                    return $model->nr_tel1 . ' ' . $model->nr_tel2;
+                },
+            ],
+//            'nr_tel1',
             // 'nr_tel2',
             // 'stan_cywilny',
             // 'status_zamieszkania',
@@ -68,8 +80,9 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'data_upadlosc',
             // 'sygnatura_upadlosc',
             // 'uwagi:ntext',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
+<?php Pjax::end(); ?>
 </div>
