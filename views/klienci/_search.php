@@ -47,7 +47,7 @@ use yii\widgets\ActiveForm;
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="form-group">
-                        <?= Html::resetButton('Reset', ['class' => 'btn btn-default form-control border-radius-none']) ?>
+                        <?= Html::input('reset', 'reset', 'Reset', ['class' => 'btn btn-default form-control border-radius-none']) ?>
                     </div>
                 </div>
             </div>

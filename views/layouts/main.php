@@ -38,9 +38,10 @@ AppAsset::register($this);
                 'items' => [
                     [
                         'label' => 'Klienci',
+                        'url' => ['klienci/index'],
                         'items' => [
-                            ['label' => 'Lista klientów', 'url' => ['klienci/index']],
-                            ['label' => 'Dodaj nowego klienta', 'url' => ['klienci/create']],
+//                            ['label' => 'Lista klientów', 'url' => ['klienci/index']],
+//                            ['label' => 'Dodaj nowego klienta', 'url' => ['klienci/create']],
                         ],
                     ],
                 ],

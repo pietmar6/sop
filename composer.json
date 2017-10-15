@@ -17,7 +17,12 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0"
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "symfony/dom-crawler": "2.8",
+        "symfony/css-selector": "2.8",
+        "wbraganca/yii2-dynamicform": "2.0.1",
+        "kartik-v/yii2-widget-datepicker": "@stable",
+        "kartik-v/yii2-widget-fileinput": "@stable"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -30,7 +35,7 @@
     },
     "config": {
         "process-timeout": 1800,
-        "fxp-asset":{
+        "fxp-asset": {
             "installer-paths": {
                 "npm-asset-library": "vendor/npm",
                 "bower-asset-library": "vendor/bower"

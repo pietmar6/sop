@@ -2,7 +2,9 @@ html,
 body {
     height: 100%;
 }
-
+* {
+    border-radius: 0 !important;
+}
 .wrap {
     min-height: 100%;
     height: auto;
@@ -137,4 +139,32 @@ h3 {
     font-size: 24px;
     margin-top: 0px;
     margin-bottom: 20px;
+}
+.panel {
+    margin-bottom: 10px;
+}
+.panel-heading {
+    padding: 5px 10px;
+}
+.panel-heading h3 {
+    line-height: 20px;
+    font-size: 14px;
+}
+.panel-body {
+    padding-bottom: 0px;
+    
+}
+.panel-body label {
+    font-size: 12px;
+    margin: 0px;
+}
+.panel-body input {
+    height: 25px;
+}
+.panel-body .help-block {
+    font-size: 12px;
+}
+.panel-body select {
+    height: 25px;
+    width: 110%;
 }

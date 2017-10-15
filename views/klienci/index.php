@@ -14,6 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="klienci-index">
 
     <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+    <p>        
+        <?= Html::a('Dodaj nowego klienta', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
 <?php Pjax::begin(); ?>
     <?=
     GridView::widget([

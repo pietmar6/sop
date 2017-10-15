@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Klienci;
-use app\models\KlienciSearch;
+use app\models\StatusyZatrudnienia;
+use app\models\StatusyZatrudnieniaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use \app\models\Zatrudnienia;
 
 /**
- * KlienciController implements the CRUD actions for Klienci model.
+ * StatusyZatrudnieniaController implements the CRUD actions for StatusyZatrudnienia model.
  */
-class KlienciController extends Controller
+class StatusyZatrudnieniaController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,12 +30,12 @@ class KlienciController extends Controller
     }
 
     /**
-     * Lists all Klienci models.
+     * Lists all StatusyZatrudnienia models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new KlienciSearch();
+        $searchModel = new StatusyZatrudnieniaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class KlienciController extends Controller
     }
 
     /**
-     * Displays a single Klienci model.
+     * Displays a single StatusyZatrudnienia model.
      * @param integer $id
      * @return mixed
      */
@@ -58,27 +57,25 @@ class KlienciController extends Controller
     }
 
     /**
-     * Creates a new Klienci model.
+     * Creates a new StatusyZatrudnienia model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Klienci();
-        $zatrudnienie = [new Zatrudnienia];
+        $model = new StatusyZatrudnienia();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ID_klienta]);
+            return $this->redirect(['view', 'id' => $model->ID_statusu_zatrudnienia]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'zatrudnienie' => $zatrudnienie,
             ]);
         }
     }
 
     /**
-     * Updates an existing Klienci model.
+     * Updates an existing StatusyZatrudnienia model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -88,7 +85,7 @@ class KlienciController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ID_klienta]);
+            return $this->redirect(['view', 'id' => $model->ID_statusu_zatrudnienia]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -97,7 +94,7 @@ class KlienciController extends Controller
     }
 
     /**
-     * Deletes an existing Klienci model.
+     * Deletes an existing StatusyZatrudnienia model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +107,15 @@ class KlienciController extends Controller
     }
 
     /**
-     * Finds the Klienci model based on its primary key value.
+     * Finds the StatusyZatrudnienia model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Klienci the loaded model
+     * @return StatusyZatrudnienia the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Klienci::findOne($id)) !== null) {
+        if (($model = StatusyZatrudnienia::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

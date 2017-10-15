@@ -54,6 +54,12 @@ class KlienciSearch extends Klienci {
             return $dataProvider;
         }
 
+        $nr_domu_query = (!empty($this->nr_domu)) ? $this->nr_domu.'%' : $this->nr_domu;
+        $nr_mieszkania_query = (!empty($this->nr_mieszkania)) ? $this->nr_mieszkania.'%' : $this->nr_mieszkania;
+        $kod_pocztowy_query = (!empty($this->kod_pocztowy)) ? $this->kod_pocztowy.'%' : $this->kod_pocztowy;
+
+
+
         // grid filtering conditions
         $query->andFilterWhere(['like', 'imie', $this->imie])
                 ->andFilterWhere(['like', 'nazwisko', $this->nazwisko])
@@ -61,13 +67,13 @@ class KlienciSearch extends Klienci {
                 ->andFilterWhere(['like', 'pesel', $this->pesel])
                 ->andFilterWhere(['or', ['like', 'nr_tel1', $this->nr_tel1], ['like', 'nr_tel2', $this->nr_tel1]])
                 ->andFilterWhere(['or', ['like', 'ulica', $this->ulica], ['like', 'ulica_zameldowania', $this->ulica]])
-                ->andFilterWhere(['or', ['like', 'nr_domu', $this->nr_domu], ['like', 'nr_domu_zameldowania', $this->nr_domu]])
-                ->andFilterWhere(['or', ['like', 'nr_mieszkania', $this->nr_mieszkania], ['like', 'nr_mieszkania_zameldowania', $this->nr_mieszkania]])
-                ->andFilterWhere(['or', ['like', 'kod_pocztowy', $this->kod_pocztowy], ['like', 'kod_pocztowy_zameldowania', $this->kod_pocztowy]])
+                ->andFilterWhere(['or', ['like', 'nr_domu', $nr_domu_query, FALSE], ['like', 'nr_domu_zameldowania', $nr_domu_query, FALSE]])
+                ->andFilterWhere(['or', ['like', 'nr_mieszkania', $nr_mieszkania_query, FALSE], ['like', 'nr_mieszkania_zameldowania', $nr_mieszkania_query, FALSE]])
+                ->andFilterWhere(['or', ['like', 'kod_pocztowy', $kod_pocztowy_query, FALSE], ['like', 'kod_pocztowy_zameldowania', $kod_pocztowy_query, FALSE]])
                 ->andFilterWhere(['or', ['like', 'miasto', $this->miasto], ['like', 'miasto_zameldowania', $this->miasto]]);
         return $dataProvider;
-//        var_dump($query->createCommand()->getRawSql());die();
-
+//        var_dump($query->createCommand()->getRawSql());
+//        die();
     }
 
 }
